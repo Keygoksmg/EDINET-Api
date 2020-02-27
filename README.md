@@ -44,20 +44,28 @@ pip install edinet-python
 ## Usage
 以下のコードでpython fileを走らせてください
 
-1 python get_zip.py : 指定した日付間に提出された書類を取得します。
+1 <br>
+python get_zip.py : 指定した日付間に提出された書類を取得します。<br>
+データはget_zip.py内に保存されます
 
-2 python get_info.py : 取得したzipfileのデータを取得します
 
-3 '/home/nagat/' に関するエラーが出た場合は <br>
+2 <br>
+python get_info.py : 取得したzipfileのデータを取得します path ('/Users/keigo/TEST/のようなものを) を自分のものに変更してください
+
+3 <br>
+'/home/nagat/' に関するエラーが出た場合は <br>
 File "/Users/keigo/.pyenv/versions/3.6.2/lib/python3.6/site-packages/arelle/Cntlr.py", line 235, in __init__ <br>
 をクリックして, Cntlr.py の中の # self.userAppDir = r'/home/nagat/.local/lib/python3.5/site-packages/arelle'
  を # でコメントアウト
  →ryというディレクトリーができますが関係ないので無視してください
  
-4 これでエラーが無くなったらpython get_info.py で情報をゲットできる
+4 <br>
+これでエラーが無くなったらpython get_info.py で情報をゲットできる
 
 (注) get_info_from_csv.py は get_info.py の中で使っています。
+(注) path の変更はget_info.py だけで大丈夫です
 
+ 
 ## 参考にした記事
 報告書インスタンス 作成ガイドライン(https://www.fsa.go.jp/search/20140919/2b_1.pdf)
 
