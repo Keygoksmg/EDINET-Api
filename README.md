@@ -24,23 +24,6 @@ python
 
 (もしpythonの環境がなかった場合: https://prog-8.com/docs/python-env)
 
-## Install
-まず以下のコードを一行づつ行って必要なパッケージをインストールしてください
-
-pip install lxml
-<br>
-pip install isodate
-<br>
-pip install arelle
-<br>
-pip install pandas
-<br>
-pip install requests
-<br>
-pip install -U rdflib
-<br>
-pip install edinet-python
-
 ## Usage
 以下のコードでpython fileを走らせてください
 

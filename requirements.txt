@@ -1,0 +1,7 @@
+lxml
+isodate
+arelle
+requests
+pandas
+rdflib
+edinet-python
