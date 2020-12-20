@@ -1,6 +1,6 @@
 # EDINET-Api
-====
 EDINETのApiを使って各企業の有価証券報告書などのデータを抽出します <br>
+
 
 ## Overview
 get_zip.py : 指定した期間ないに提出された書類をzipfileで取得
