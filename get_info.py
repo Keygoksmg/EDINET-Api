@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from pathlib import Path
-from arelle import ModelManager
-from arelle import Cntlr
+from arelle import ModelManager, Cntlr
 import os
 import zipfile
 import glob
@@ -19,10 +18,11 @@ def make_edinet_info_list(edinetcodedlinfo_filepath):
 
 
 def unzip_file(zip_dir):
-    edinetcodedlinfo_filepath = '/Users/keigo/TEST/EdinetcodeDlInfo.csv'
+    edinetcodedlinfo_filepath = 'EdinetcodeDlInfo.csv'
     edinet_info_list = make_edinet_info_list(edinetcodedlinfo_filepath)
 
     zip_files = glob.glob(os.path.join(zip_dir, '*.zip'))
+    print(zip_files)
 
     number_of_zip_lists = len(zip_files)
     print("number_of_zip_lists：", number_of_zip_lists)
@@ -31,9 +31,9 @@ def unzip_file(zip_dir):
     for index, zip_file in enumerate(zip_files):
         print(zip_file, ":", index + 1, "/", number_of_zip_lists)
         # zipの保存先を作成
-        _filepath = zip_file.split('/')[4]
+        _filepath = zip_file.split('/')[-1]
         file_code = _filepath.split('.')[0]
-        save_dir = '/Users/keigo/TEST/data/raw/' + file_code
+        save_dir = 'data/raw/' + file_code
         file_code_list.append(file_code)
         # save_dirにzipを保存
         with zipfile.ZipFile(zip_file) as zip_f:
@@ -44,14 +44,14 @@ def unzip_file(zip_dir):
     employee_frame = pd.DataFrame()
     # for 各企業の情報をmergeさせて持ってくる
     for index, _path in enumerate(file_code_list):
-        dir_path = '/Users/keigo/TEST/data/raw/' + _path # _path はS100HHC0等のDOC_ID
-        dir_copy = '/Users/keigo/TEST'
+        dir_path = 'data/raw/' + _path # _path はS100HHC0等のDOC_ID
+        dir_copy = '/'
         dir_util.copy_tree(dir_path, dir_copy)  # これでデータを取りに行ける
         # 取りに行くデータをひとつづつ指定する
-        file_target = glob.glob('/Users/keigo/TEST/data/raw/' + _path + '/XBRL/PublicDoc/*.xbrl')
+        file_target = glob.glob('data/raw/' + _path + '/XBRL/PublicDoc/*.xbrl')
         _path1 = file_target[0].split('/')[9]  # jpcrp030000-asr-001_E34729-000_2019-08-31_01_2019-11-27.xbrl
 
-        xbrl_file_expression = '/Users/keigo/TEST/XBRL/PublicDoc/' + _path1
+        xbrl_file_expression = 'XBRL/PublicDoc/' + _path1
         xbrl_file = glob.glob(xbrl_file_expression)
         xbrl_file = ' '.join([str(elem) for elem in xbrl_file])
         _edinet_company_info_list = []
@@ -215,14 +215,16 @@ def write_csv_of_employee_info(edinet_company_info_list, df_col_list, index, emp
     return employee_frame
 
 def main():
-    edinetcodedlinfo_filepath = '/Users/keigo/TEST/EdinetcodeDlInfo.csv'
+    edinetcodedlinfo_filepath = 'EdinetcodeDlInfo.csv'
     edinet_info_list = make_edinet_info_list(edinetcodedlinfo_filepath)
+    # print(edinet_info_list)
 
-    zip_dir = '/Users/keigo/TEST/'
+    zip_dir = 'data/zip'
     employee_frame = unzip_file(zip_dir)
+    # print(employee_frame)
 
-    print(employee_frame)
-    employee_frame.to_csv("/Users/keigo/TEST/try2.csv", encoding='utf-8-sig')
+    # print(employee_frame)
+    # employee_frame.to_csv("try2.csv", encoding='utf-8-sig')
     print("extract finish")
 
 if __name__ == "__main__":

@@ -19,21 +19,18 @@ data/raw : zipから回答された書類データが保存されます
 
 data/external : タクソノミ原本が保存されてます
 
-## Requirement
-python
 
-(もしpythonの環境がなかった場合: https://prog-8.com/docs/python-env)
-
-## Usage
-以下のコードでpython fileを走らせてください
+# 以下のコードでpython fileを走らせてください
 
 1 <br>
-python get_zip.py : 指定した日付間に提出された書類を取得します。<br>
+```python get_zip.py``` 
+指定した日付間に提出された書類を取得します。<br>
 データはget_zip.py内に保存されます
 
 
 2 <br>
-python get_info.py : 取得したzipfileのデータを取得します path ('/Users/keigo/TEST/のようなものを) を自分のものに変更してください
+```python get_info.py```
+取得したzipfileのデータを取得します path ('/Users/keigo/TEST/のようなものを) を自分のものに変更してください
 
 3 <br>
 '/home/nagat/' に関するエラーが出た場合は <br>
@@ -43,7 +40,7 @@ File "/Users/keigo/.pyenv/versions/3.6.2/lib/python3.6/site-packages/arelle/Cntl
  →ryというディレクトリーができますが関係ないので無視してください
  
 4 <br>
-これでエラーが無くなったらpython get_info.py で情報をゲットできる
+これでエラーが無くなったら```python get_info.py``` で情報をゲットできる
 
 (注) get_info_from_csv.py は get_info.py の中で使っています。
 (注) path の変更はget_info.py だけで大丈夫です
